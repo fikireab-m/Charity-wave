@@ -8,6 +8,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'widgets/support_category_tile.dart';
+
 class PlaceDetails extends StatefulWidget {
   final Region place;
   const PlaceDetails({super.key, required this.place});
@@ -285,6 +287,9 @@ class _PlaceDetailsState extends State<PlaceDetails> {
               ),
             ),
           ),
+          SupportCategoryListTile(category: region.supportCategories[0]),
+          SupportCategoryListTile(category: region.supportCategories[1]),
+          SupportCategoryListTile(category: region.supportCategories[2]),
           SizedBox(
             width: double.infinity,
             child: Padding(
