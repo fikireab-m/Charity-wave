@@ -21,14 +21,14 @@ class RegionIntro extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 8.sp),
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFFE8E8E8),
-                  blurRadius: 3.5.r,
-                  spreadRadius: 1,
-                  offset: const Offset(0, -3),
-                )
-              ],
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: const Color(0xFFE8E8E8),
+              //     blurRadius: 3.5.r,
+              //     spreadRadius: 1,
+              //     offset: const Offset(0, -3),
+              //   )
+              // ],
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20.r),
                 topRight: Radius.circular(20.r),

@@ -248,7 +248,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
             child: SizedBox(
                 height: 150.h,
                 child: GoogleMap(
-                  mapType: MapType.normal,
+                  mapType: MapType.terrain,
                   markers: [region]
                       .map(
                         (region) => Marker(

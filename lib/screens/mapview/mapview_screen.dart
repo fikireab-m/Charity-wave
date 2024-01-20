@@ -247,7 +247,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
                 return Stack(alignment: Alignment.topCenter, children: [
                   (redPin != null && greenPin != null && lightGreenPin != null)
                       ? GoogleMap(
-                          mapType: MapType.satellite,
+                          mapType: MapType.terrain,
                           onTap: (LatLng value) {
                             setState(() {
                               selectedRegion = null;
@@ -286,15 +286,16 @@ class _MapViewScreenState extends State<MapViewScreen> {
                     width: screenWidth * .9,
                     height: 50.h,
                     decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30.r),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[300]!,
-                              blurRadius: 5.r,
-                              spreadRadius: 3.r,
-                              offset: const Offset(0, 2))
-                        ]),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30.r),
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //       color: Colors.grey[300]!,
+                      //       blurRadius: 5.r,
+                      //       spreadRadius: 3.r,
+                      //       offset: const Offset(0, 2))
+                      // ],
+                    ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10.sp),
                       child: TextField(
