@@ -248,7 +248,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8.sp, horizontal: 16.sp),
             child: SizedBox(
-                height: 150.h,
+                height: 240.h,
                 child: GoogleMap(
                   mapType: MapType.terrain,
                   markers: [region]
