@@ -65,7 +65,7 @@ class RegionIntro extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.r),
                           image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: CachedNetworkImageProvider(region.images[1]),
+                            image: CachedNetworkImageProvider(region.images[0]),
                           ),
                         ),
                         child: Center(

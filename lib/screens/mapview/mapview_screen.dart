@@ -247,7 +247,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
                 return Stack(alignment: Alignment.topCenter, children: [
                   (redPin != null && greenPin != null && lightGreenPin != null)
                       ? GoogleMap(
-                          mapType: MapType.normal,
+                          mapType: MapType.satellite,
                           onTap: (LatLng value) {
                             setState(() {
                               selectedRegion = null;
@@ -263,11 +263,9 @@ class _MapViewScreenState extends State<MapViewScreen> {
                                   },
                                   markerId: MarkerId(region.title),
                                   position: region.location,
-                                  icon: region.status == Status.red &&
-                                          selectedRegion == region
-                                      ? bigRedPin!
-                                      : region.status == Status.red &&
-                                              selectedRegion != region
+                                  icon: region.status == Status.red
+                                      ? redPin!
+                                      : region.status == Status.red
                                           ? redPin!
                                           : region.status == Status.green
                                               ? greenPin!
