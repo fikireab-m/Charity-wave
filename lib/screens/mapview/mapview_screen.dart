@@ -18,8 +18,8 @@ class MapViewScreen extends StatefulWidget {
 
 class _MapViewScreenState extends State<MapViewScreen> {
   static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(30.1551705, 39.8724459),
-    zoom: 5,
+    target: LatLng(9.145, 40.489673),
+    zoom: 6,
   );
   final TextEditingController placeController = TextEditingController();
   final Completer<GoogleMapController> _controller =
@@ -35,12 +35,12 @@ class _MapViewScreenState extends State<MapViewScreen> {
   Future<List<Region>> getAllRegions() async {
     regions = [
       Region(
-        title: 'Israel & Palestine',
-        subtitle: 'Civil War',
-        location: const LatLng(32.538081, 35.565805),
+        title: 'Amhara',
+        subtitle: 'Armed Conflict',
+        location: const LatLng(11.59364, 37.39077),
         images: [
-          'https://www.washingtoninstitute.org/sites/default/files/imports/israel-palestinian-flagsAP08100306412.jpg',
-          "https://www.brookings.edu/wp-content/uploads/2016/06/israel_palestine_flags001.jpg"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Fano_fighters_near_Saint_George_church_after_re-capturing_it_from_the_TDF.jpg/220px-Fano_fighters_near_Saint_George_church_after_re-capturing_it_from_the_TDF.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Amhara_in_Ethiopia.svg/1024px-Amhara_in_Ethiopia.svg.png"
         ],
         supportCategories: [
           Category(
@@ -60,7 +60,10 @@ class _MapViewScreenState extends State<MapViewScreen> {
         id: 1,
         volunteerID: 1,
         suppID: 1,
-        description: 'Help please',
+        description: '''
+The War in Amhara is an armed conflict in the Amhara Region of Ethiopia that began in April 2023 between the Amhara regional forces along with the Fano militia, and the Ethiopian government. The conflict began after the Ethiopian military raided the Amhara Region to disarm the Amhara Special Forces and other regional allies, which resulted in resistance of local armed forces and a series of protests in Gondar, Kobo, Sekota, Weldiya and other cities on 9 April.
+On 27 April, the head of Amhara's Prosperity Party Girma Yeshitila was assassinated in Menz, North Shewa. The Ethiopian government accused the Eastern faction of the Fano militia for plotting overthrowing the government. The Ethiopian security forces said on 30 April that 47 suspects were arrested by the Ethiopian government in connection with an alleged assassination plot.
+''',
         addedAt: 1700682461,
       ),
       Region(
@@ -84,7 +87,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
             donationRequired: 11024000,
           ),
           Category(
-            title: 'First Aid 🍲',
+            title: 'First Aid ⛑️',
             donationRaised: 2297640,
             donationRequired: 2802000,
           ),
@@ -112,7 +115,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
               donationRaised: 11024000,
               donationRequired: 11024000),
           Category(
-              title: 'First Aid 🍲',
+              title: 'First Aid ⛑️',
               donationRaised: 2297640,
               donationRequired: 2802000),
         ],
@@ -140,7 +143,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
               donationRaised: 11024000,
               donationRequired: 11024000),
           Category(
-              title: 'First Aid 🍲',
+              title: 'First Aid ⛑️',
               donationRaised: 2297640,
               donationRequired: 2802000),
         ],
