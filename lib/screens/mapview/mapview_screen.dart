@@ -203,10 +203,9 @@ class _MapViewScreenState extends State<MapViewScreen> {
             forceMaterialTransparency: true,
             centerTitle: true,
             title: const Text(
-              'Impact-Chain.org',
+              'CharityWave',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontFamily: 'Gordita',
               ),
             ),
             actions: [
