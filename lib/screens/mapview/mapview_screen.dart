@@ -188,7 +188,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-
+    const mapApiKey = String.fromEnvironment("MAP_API_KEY");
     return PopScope(
       onPopInvoked: (_) {
         if (selectedRegion != null) {
@@ -303,14 +303,12 @@ class _MapViewScreenState extends State<MapViewScreen> {
                         controller: placeController,
                         readOnly: true,
                         onTap: () async {
-                          const apiKey =
-                              "AIzaSyDBHrTNaRSvRfHtcHXvRi42Hbr7znyH8sU";
                           GoogleMapsPlaces places =
-                              GoogleMapsPlaces(apiKey: apiKey);
+                              GoogleMapsPlaces(apiKey: mapApiKey);
                           Prediction? prediction =
                               await PlacesAutocomplete.show(
                                   context: context,
-                                  apiKey: apiKey,
+                                  apiKey: mapApiKey,
                                   mode: Mode.overlay,
                                   components: [],
                                   types: [],
