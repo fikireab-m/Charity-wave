@@ -18,6 +18,7 @@ dependencies:
   flutter_google_places: ^0.3.0
   google_maps_flutter: ^2.5.3
   flutter_screenutil: ^5.9.0
+  google_maps_webservice: ^0.0.20-nullsafety.5
 
 dev_dependencies:
   flutter_test:

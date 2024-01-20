@@ -5,3 +5,7 @@ class AppIcons {
   static const String greenPin = "assets/icons/green_pin.png";
   static const String lightGreenPin = "assets/icons/light_green_pin.png";
 }
+
+class Images {
+  static const String unknownPerson = "assets/images/unknown_user.png";
+}
