@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:charitywave/models/models.dart';
+import 'package:charitywave/screens/placedetail/placedetail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -109,7 +110,12 @@ class RegionIntro extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.sp),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PlaceDetails(place: region),
+                            ),
+                          ),
                           child: Icon(
                             Icons.info,
                             size: 40.sp,
