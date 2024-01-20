@@ -237,6 +237,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                 ),
                 Text(
                   region.description,
+                  textAlign: TextAlign.justify,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: const Color(0xFF00031B),
                         fontSize: 18.sp,
