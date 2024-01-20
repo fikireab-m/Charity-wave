@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:charitywave/configs/configs.dart';
 import 'package:charitywave/models/models.dart';
+import 'package:charitywave/screens/mapview/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
@@ -345,6 +346,8 @@ class _MapViewScreenState extends State<MapViewScreen> {
                       ),
                     ),
                   ),
+                  if (selectedRegion != null)
+                    RegionIntro(region: selectedRegion!)
                 ]);
               }
             }),
