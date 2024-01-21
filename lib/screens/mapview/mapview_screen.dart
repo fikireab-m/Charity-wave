@@ -188,7 +188,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
     const mapApiKey = String.fromEnvironment("MAP_API_KEY");
     return PopScope(
       onPopInvoked: (_) {
@@ -200,41 +200,42 @@ class _MapViewScreenState extends State<MapViewScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            forceMaterialTransparency: true,
-            centerTitle: true,
-            title: const Text(
-              'CharityWave',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-              ),
+          backgroundColor: Colors.transparent,
+          forceMaterialTransparency: true,
+          centerTitle: true,
+          title: const Text(
+            'CharityWave',
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
             ),
-            actions: [
-              GestureDetector(
-                onTap: () {},
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 8.0.sp,
-                    horizontal: 16.0.sp,
-                  ),
-                  child: Container(
-                    width: 48.sp,
-                    height: 48.sp,
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage(Images.unknownPerson),
-                        fit: BoxFit.contain,
-                      ),
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: const Color.fromARGB(255, 199, 199, 199),
-                        width: 1.sp,
-                      ),
+          ),
+          actions: [
+            GestureDetector(
+              onTap: () {},
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 8.0.sp,
+                  horizontal: 16.0.sp,
+                ),
+                child: Container(
+                  width: 48.sp,
+                  height: 48.sp,
+                  decoration: BoxDecoration(
+                    image: const DecorationImage(
+                      image: AssetImage(Images.unknownPerson),
+                      fit: BoxFit.contain,
+                    ),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: const Color.fromARGB(255, 199, 199, 199),
+                      width: 1.sp,
                     ),
                   ),
                 ),
-              )
-            ]),
+              ),
+            )
+          ],
+        ),
         body: FutureBuilder<List<Region>>(
             future: getAllRegions(),
             builder: (context, snapshot) {
@@ -245,107 +246,112 @@ class _MapViewScreenState extends State<MapViewScreen> {
                   child: Text("Something went wrong"),
                 );
               } else {
-                return Stack(alignment: Alignment.topCenter, children: [
-                  (redPin != null && greenPin != null && lightGreenPin != null)
-                      ? GoogleMap(
-                          mapType: MapType.terrain,
-                          onTap: (LatLng value) {
-                            setState(() {
-                              selectedRegion = null;
-                            });
-                          },
-                          markers: regions
-                              .map(
-                                (region) => Marker(
-                                  onTap: () {
-                                    setState(() {
-                                      selectedRegion = region;
-                                    });
-                                  },
-                                  markerId: MarkerId(region.title),
-                                  position: region.location,
-                                  icon: region.status == Status.red
-                                      ? redPin!
-                                      : region.status == Status.red
-                                          ? redPin!
-                                          : region.status == Status.green
-                                              ? greenPin!
-                                              : lightGreenPin!,
-                                ),
-                              )
-                              .toSet(),
-                          initialCameraPosition: _kGooglePlex,
-                          onMapCreated: (GoogleMapController controller) {
-                            controller.setMapStyle(_mapStyle);
-
-                            _controller.complete(controller);
-                          },
-                        )
-                      : const SizedBox(),
-                  Container(
-                    margin: EdgeInsets.only(top: 10.sp),
-                    width: screenWidth * .9,
-                    height: 50.h,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30.r),
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //       color: Colors.grey[300]!,
-                      //       blurRadius: 5.r,
-                      //       spreadRadius: 3.r,
-                      //       offset: const Offset(0, 2))
-                      // ],
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10.sp),
-                      child: TextField(
-                        controller: placeController,
-                        readOnly: true,
-                        onTap: () async {
-                          GoogleMapsPlaces places =
-                              GoogleMapsPlaces(apiKey: mapApiKey);
-                          Prediction? prediction =
-                              await PlacesAutocomplete.show(
-                                  context: context,
-                                  apiKey: mapApiKey,
-                                  mode: Mode.overlay,
-                                  components: [],
-                                  types: [],
-                                  strictbounds: false);
-
-                          if (prediction != null) {
-                            final place = await places
-                                .getDetailsByPlaceId(prediction.placeId!);
-                            final geometry = place.result.geometry;
-                            if (geometry != null) {
-                              final controller = await _controller.future;
-                              final location = place.result.geometry!.location;
-
-                              placeController.text = place.result.name;
-                              controller.animateCamera(CameraUpdate.newLatLng(
-                                  LatLng(location.lat, location.lng)));
+                return Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    (redPin != null &&
+                            greenPin != null &&
+                            lightGreenPin != null)
+                        ? GoogleMap(
+                            mapType: MapType.terrain,
+                            onTap: (LatLng value) {
+                              setState(() {
+                                selectedRegion = null;
+                              });
+                            },
+                            markers: regions
+                                .map(
+                                  (region) => Marker(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedRegion = region;
+                                      });
+                                    },
+                                    markerId: MarkerId(region.title),
+                                    position: region.location,
+                                    icon: region.status == Status.red
+                                        ? redPin!
+                                        : region.status == Status.red
+                                            ? redPin!
+                                            : region.status == Status.green
+                                                ? greenPin!
+                                                : lightGreenPin!,
+                                  ),
+                                )
+                                .toSet(),
+                            initialCameraPosition: _kGooglePlex,
+                            onMapCreated: (GoogleMapController controller) {
+                              controller.setMapStyle(_mapStyle);
+                              _controller.complete(controller);
+                            })
+                        : const SizedBox(),
+                    Container(
+                      margin: EdgeInsets.only(top: 10.sp),
+                      width: screenWidth * .9,
+                      height: 50.h,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30.r),
+                        // boxShadow: [
+                        //   BoxShadow(
+                        //       color: Colors.grey[300]!,
+                        //       blurRadius: 5.r,
+                        //       spreadRadius: 3.r,
+                        //       offset: const Offset(0, 2))
+                        // ],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.sp),
+                        child: TextField(
+                          controller: placeController,
+                          readOnly: true,
+                          onTap: () async {
+                            GoogleMapsPlaces places =
+                                GoogleMapsPlaces(apiKey: mapApiKey);
+                            Prediction? prediction =
+                                await PlacesAutocomplete.show(
+                              context: context,
+                              apiKey: mapApiKey,
+                              mode: Mode.overlay,
+                              components: [],
+                              types: [],
+                              strictbounds: false,
+                            );
+                            if (prediction != null) {
+                              final place = await places
+                                  .getDetailsByPlaceId(prediction.placeId!);
+                              final geometry = place.result.geometry;
+                              if (geometry != null) {
+                                final controller = await _controller.future;
+                                final location =
+                                    place.result.geometry!.location;
+                                placeController.text = place.result.name;
+                                controller.animateCamera(
+                                  CameraUpdate.newLatLng(
+                                    LatLng(location.lat, location.lng),
+                                  ),
+                                );
+                              }
                             }
-                          }
-
-                          placeController.text = "";
-                        },
-                        decoration: InputDecoration(
-                          hintText: "Search by location...",
-                          border: InputBorder.none,
-                          prefixIconConstraints:
-                              BoxConstraints(maxHeight: 25.sp),
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.sp),
-                            child: Image.asset(AppIcons.locationPin),
+                            placeController.text = "";
+                          },
+                          decoration: InputDecoration(
+                            hintText: "Search by location...",
+                            border: InputBorder.none,
+                            prefixIconConstraints:
+                                BoxConstraints(maxHeight: 25.sp),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.sp),
+                              child: Image.asset(AppIcons.locationPin),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  if (selectedRegion != null)
-                    RegionIntro(region: selectedRegion!)
-                ]);
+                    if (selectedRegion != null)
+                      RegionIntro(region: selectedRegion!),
+                  ],
+                );
               }
             }),
       ),
